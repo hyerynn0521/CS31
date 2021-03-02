@@ -1,0 +1,46 @@
+Name: Hyerin Lee
+UID: 305 567 859
+
+a. One obstacle I overcame is in the identicalValuesTogether function, I had to find a way to keep track of whether there are identical values that are not next to each other. I figured it out by using a Boolean variable by changing it to true if there is a different value after one identical value has been found, and using that boolean as a condition. Another obstacle I overcame is figuring out the mechanism for shiftLeft function. At first, I moved the current value to the previous index but later found out that it's much more efficient to move the next value to the current index and store the first value in a string variable and then later use that to set last value to first. Last obstacle was handling the case for hasTwoOrMoreDuplicates where there was two pairs of different values (ex. "A", "A", "B", "B"). I also handled this by using a boolean value. After the first pair is found, I set the boolean to true, than if another pair was found with different value and the boolean is true, I set the function to return true.
+
+b.
+identicalValuesTogether({a, a, b, b, a}, 5): makes sure function checks for both a and b
+identicalValuesTogether({a, b, c, d, e}, 5): makes sure function allows all different values
+identicalValuesTogether({a, a, b, b, a}, 4): makes sure function checks only until the given size
+identicalValuesTogether({a, a, b, a, a}, 5): makes sure function checks if ALL identical values are next to each other, not partially
+identicalValuesTogether({a, b, a, a, b}, -1): makes sure function checks for invalid array size
+
+shiftLeft({23, foo, dog, cat, ok}, 5, 2, "foo"): makes sure the function doesn't count the last values that are already equal to the placeholder
+shiftLeft({1, waves, ta, 3, 6}, 5, 39, "dog"): makes sure function doesn't overcount the times placeholder was used
+shiftLeft({cherry, AOT, lucky, cs31, 39, tty}, 5, -10, "cs31"): makes sure the function checks for valid amount
+shiftLeft({a, b, rd, gsdf, fret, y, r}, 0, 6, "e"): makes sure function checks for valid array size
+shiftLeft({proj, proj, proj, proj, proj, foo}, 6, 5, "proj"): makes sure function doesn't count values already same as placeholder
+
+locateMaximum({xy, xy, XY, z}, 4): makes sure function returns the earliest index of the maximum value.
+locateMaximum({123, 1234, 12345}, 3): makes sure function compares all parts of the string
+locateMaximum({where, is, dog, my, 79, to}, 3): makes sure function returns max within the size given regardless of actual size
+locateMaximum({you, my, are, fire, one, the}, 0): makes sure function checks for valid array size
+locateMaximum({Ab, AB, aB, ab}, 4): makes sure function compares lower and upper case
+
+hasTwoOrMoreDuplicates({e, g, d, s, h}, 5): makes sure function returns true for all different values
+hasTwoOrMoreDuplicates({a, b, a, b, c}, 5): makes sure function handles a case where there's two pairs that have different values
+hasTwoOrMoreDuplicates({a, a, g, a}, 4): makes sure function returns true for three or more of identical value
+hasTwoOrMoreDuplicates({ge, h, d, ss, gh, y}, -40): makes sure function checks for valid array size
+hasTwoOrMoreDuplicates({a, a, b, c, a}, 4): makes sure function checks for duplicates up to the given size
+
+countFloatingPointValues({1, 12., 12.the, 2o}, 5): makes sure function checks for valid type of characters in a float
+countFloatingPointValues({0.1, 12.12., he11o, lov3}, 4): makes sure function checks for valid format of floats ( no more than one dot in a float)
+countFloatingPointValues({15, 34, 65, hi, n1ce}, 5): makes sure function counts floats with no dots as valid
+countFloatingPointValues({15.1, 24444.4.4, hey, 7}, 2): makes sure function checks up to the size given
+countFloatingPointValues({yo, 1, am, string, 34}, -349): makes sure function checks for valid array size
+
+hasNoCapitals({abcdefG, yolo, Cs, A, B}, 5): makes sure function checks every character of each string values
+hasNoCapitals({abc, def, hebi, YYY, Dg}, 3): makes sure function only checks up to the given size
+hasNoCapitals({14, 29, 33, yay, yay, HohO}, 6): makes sure function checks all elements of array 
+hasNoCapitals({yuh, YUH, YuH, yuH, Yuh, yUh}, -10): makes sure function checks for valid array size
+hasNoCapitals({hey, hi, sup, ye, yuh}, 5): makes sure function outputs correct result(standard)
+
+replaceFirstAndLastOccurrences({eeeeeee, eon, giraffe, yeah}, 4, 'e', 'z'): makes sure function doesn't overcount when there's only one charToFind in a string
+replaceFirstAndLastOccurrences({oh, hi, okay, yup}, 3, 'p', 'c'): makes sure function only replaces and counts character within the size given
+replaceFirstAndLastOccurrences({y, y, y, y, y}, 5, 'y', 'y'): makes sure function can deal with single length strings
+replaceFirstAndLastOccurrences({ucla, fight, fight, fight}, -110, 't', 'y'): makes sure function checks for valid array size
