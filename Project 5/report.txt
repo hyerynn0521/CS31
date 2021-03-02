@@ -1,0 +1,27 @@
+Name: Hyerin Lee
+UID: 305 567 859
+
+a. One notable obstacle I overcame was finding a small mistake of using the wrong variable name. I did this by looking at in which cases the tests were handled incorrectly and identifying the functions involved and checking for any typos. I found that getFromCity() returned mToCity instead of mFromCity. Another obstacle I overcame was finding a way to change the mToCity and mFromCity in the freeFlight() function because in the original setToCity and setFromCity function, there was a restriction of to != mFromCity so in freeFlight() when from and to parameters were swapped(ex. From LAX to LAS => from LAS to LAX), I couldn't swap the from and to city. I overcame this by making a setToCity2 and setFromCity2 function which was made to be used only in freeFlight() function which had the to != mFromCity restriction removed.
+
+b.
+1. PlaneFlight f("Hyerin", "LAX", "LAS", -100, 0 )
+	f.setFromCity("LAX");
+	assert(f.getFromCity() == "LAS"); // makes sure program doesn't allow same to and from city
+	assert(f.getCost() == -1);//makes sure invalid cost is handled correctly
+	assert(f.getMileage() == -1);//makes sure invalid mileage is handled correctly
+	
+2. PlaneFlight flew("Howard", "CHI", "BOS", 693, 300)
+	FrequentFlyerAccount account("Name");
+	FrequentFlyerAccount acc("Howard")
+	assert(account.addFlightToAccount(f) == false); // makes sure addFlightToAccount checks for name
+	assert(acc.addFlightToAccount(f) == true); // makes sure addFlightToAccount works as expected
+	assert(acc.canEarnFreeFlight(200) == true); // makes sure canEarnFreeFlight works as expected
+	acc.freeFlight("LAX", "LAS", 200, f)
+	assert(std::to_string(acc.getBalance()) == "100.000000") // makes sure balance is subtracted properly
+	assert(f.getToCity() == "LAS") // makes sure flight is changed as desired
+	assert(f.getFromCity() == "LAX") // makes sure flight is changed as desired
+	assert(std::to_string(f.getCost()) == "0.000000") // makes sure cost is adjusted to 0
+	FrequentFlyerAccount test(flew)
+	test.addFlightToAccount(flew)
+	assert(std::to_String(flew.getBalance()) == "300.000000") // makes sure balance increments after adding flight to account
+	assert(flew.canEarnFreeFlight(400) == false)//makes sure canEarnFreeFlight works as expected
