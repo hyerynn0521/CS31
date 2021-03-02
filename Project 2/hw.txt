@@ -1,0 +1,85 @@
+Name: Hyerin Lee
+UID: 305 567 859
+
+1. cout << "endl"; will output the string "endl".
+cout << endline; will output the information stored inside the variable endline, which is the string "endl".
+cout << endl; will not print out anything but instead make the next item print out on a new line.
+cout << "endline"; will print out the string "endline". If this program segment is run, the output will be:
+
+endlendl
+endline
+
+2. This program prints out user's input number of lines with # at the end of blank spaces, starting with input number minus one blank spaces and decreasing one space after each line.
+
+3. 
+	#include <iostream>
+	using namespace std;
+
+	int main()
+	{
+	    int len;
+
+	    cout << "Enter a number: ";
+	    cin >> len;
+
+	    for (int i = 0; i < len; i++)
+	    {
+		int j = i+1;
+		    while (j < len)
+		    {
+		        cout << " ";
+			j++;
+		    }
+		    cout << "#" << endl;
+	    }
+            return( 0 );
+	}
+
+4. 
+	#include <iostream>
+	using namespace std;
+
+	int main()
+	{
+	    int len;
+
+	    cout << "Enter a number: ";
+	    cin >> len;
+	    int i = 0;
+	    do{
+		for (int j = i+1; j < len; j++)
+		{
+		    cout << " ";
+		}
+
+		if(len>0)
+		{
+		    cout << "#" << endl;
+		}
+		i++;
+	    } while(i<len && i>0);
+
+            return( 0 );
+	}
+
+5. 	
+	switch(weekday){
+
+            case 1:
+                cout << "rainy days and mondays get me down";
+                break;
+            case 2:
+                cout << "ruby tuesday";
+                break;
+            case 6:
+                cout << "wonderful weekend";
+                break;
+            case 7:
+                cout << "wonderful weekend";
+                break;
+            default:
+                cout << "regular day";
+    	
+	}
+
+

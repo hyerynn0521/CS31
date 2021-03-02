@@ -1,0 +1,27 @@
+Name: Hyerin Lee
+UID: 305 567 859
+
+a. Some notable obstacles that I overcame include figuring out the order of calculation. I first had all the calculation inside each of the month condition, but realized that is inefficient. I also had trouble finding logical errors. One logical error that I had was a spelling error which was hard to spot. Another challenge was getting the Linux server and g31 to work and testing the code on the server with correct commands.
+
+b. 
+String with spaces ("February January", 21, 2004): makes sure user uses getline() instead of cin.
+
+Negative day ("January", -35, 2201): makes sure user checks if the day falls within the allowed range.
+
+Year outside range ("June", 23, 4078): makes sure user checks if the day falls within the allowed range.
+
+Invalid day and year ("August", 304, -100): Checks if the correct error statement prints out (should be "Invalid day!", not "Invalid year!")
+
+Month not capitalized ("july", 4, 2020): makes sure the program checks if month input is capitalized.
+
+Leap year ("February", 29, 2020): Makes sure program applies the leap year offset.
+
+Year divisible by 100 (not a leap year) ("February", 29, 2000): Makes sure program doesn't apply leap year where the year is evenly divisible by 100(with the exception of evenly divisible by 400).
+
+For each month ("January", 1, 2001), ("February", 2, 2002), ... ("December", 12, 2012): checks for spelling of each month 
+
+Test cases that my program handled incorrectly:
+Day input with non-integers ("February", 10& , 2020) 
+Year input with non-integers ("May", 24, 2020%)
+
+
