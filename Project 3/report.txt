@@ -1,0 +1,49 @@
+Name: Hyerin Lee
+UID: 305 567 859
+
+a. 
+One challenge that I overcame is finding where the bug was when there was an error caused by going over the string. Another notable obstacle was fixing the errors caused by the stoi() function, which I solved by implementing the extractNumber() function provided. Last obstacle that I overcame was implementing the total = positive cases + negative cases in the isValidResultString() function, which I did by writing a separate helper function that checks if the total equals sum of positive and negative cases.
+
+b. 
+The design of my program includes the five required functions, and three additional helper functions. In the isValidResultString(string results) function, the function checks first for all possible syntax errors such as addition letters, no numbers after + or -, etc. Then, when the syntax is valid, a helper function totalEqualsNegPos(string results) is called after each batch to make sure that the total equals the sum of positive and negative cases in the string. For inputs with multiple batches, I used the results.substr() function to cut the string to only include the current batch when checking for the validity of the total cases. 
+
+For the functions positiveTests() and negativeTests(), it first checks if a string is valid with the isValidResultString() function. Then, it uses another helper function negativePositiveFirst() and determine which of the two cases (positive first, negative first) each batches apply to. This helper function is called every time there is a new batch (so when current character is 'R'). 
+
+In the positiveTests() function, if the positive sign comes first, the index after the '+' character is the starting index for the positive test case numbers. And the index before the '-' character is the ending index for the positive test case numbers. Then the results.substr() is used to extract the positive test case numbers as a string, and the third helper function, extractNumber() function is used to convert that substring into a int. 
+
+If the positive sign comes last, the index after the '+' character is the starting index, and the last index (length of the results minus one), or the index before another 'R' character if there are multiple batches, is the ending index. And extractNumber is used again, and added on to the total positive cases variable.
+
+The function negativeTests() works the exact same way, except the '+' and '-' signs would be switched.
+
+For the totalTests() function, it also first checks for the validity of the string with isValidResultString() function, then extracts the number of total cases by determining the starting index and ending index for the number, much like negativeTests() and positiveTests() function. Starting Index is an index after the 'R' character, as the total is specifies right after that character. Then, if the next character is a '+' or '-', the current index is the ending index. Now, to make sure that the ending index is not confused with the index before the character   '+' or '-' that comes second, there is a int variable firstNext that is set to 0, and turns to 1 once first ending index has been counted. The condition for determining endIndex checks if firstNext is 0, so that those errors can be avoided. As a side note, firstNext is set to 0 again for every new batch. And once the ending index is determined, it adds to the total number of total cases by using .substr() to extract the number and using extractNumber() to convert the string to an integer. 
+
+For the last function, batches() which was fairly simple to design, it checks for the validity of the string first through isValidResultString(), and then increments the batch count every time there is a character 'R'. 
+
+c. 
+1. "R10R10" : makes sure that the program checks for number of positive and negative characters
+2. "R10+010-0" : to check if the program invalidates leading zero(s) if followed by other numbers.
+3. "R10+1-9R10-1+9" : makes sure program can deal with switched order of positive and negative.
+4. "R10+1-9R100-2+9" : makes sure program can check batches after the first one.
+5. "R100-100+" : makes sure program checks for integers after '-' or '+'
+6. "R10+9-1R240-120+120R32+14-18" : makes sure program can accurately compute total of positive, negative, and total cases and see if ValidResultString() works as expected.
+7. "  R10-10+0" : makes sure program deals with any other invalid characters in the string
+8. "R50+10-40  Rrrrr" : makes sure program checks until the end of the string 
+9. "R0+0-0" : makes sure program checks for validity of total cases
+10. "R100-50+50R100-50-50" : makes sure program tracks valid number of positive and negative characters in each batches
+11. "R90+90-000000" : makes sure program invalidates multiple leading zeros even if sum is correct
+12. "R10+10-0" : makes sure the program doesn't automatically invalidate leading zero.
+13. "R10-0*10" : makes sure the program checks for invalid characters in the string.
+14. "r10-5+5" : makes sure the program checks if 'R' is capitalized.
+15. "R10+5-5 R30-28+2" : checks for no space between batches
+16. "R0010+005-005" : no leading zeros in front of integers
+17. "R18-19+1" : makes sure program checks if total case equals sum of positive and negative cases. 
+18. "R10+8-2R34-19+15R28-14+13" : makes sure program checks until the end accurately.
+19. "R100+200--100" : makes sure program doesn't extract negative numbers
+20. "R100+100-0R50-25+25R3-2+1" : check again to see if program accurately calculates total, positive, negative and the validity.
+21. "RR10+9-1" : makes sure the program doesn't accept more than one R.
+22. "      " : makes sure program invalidates empty strings.
+
+
+
+
+
