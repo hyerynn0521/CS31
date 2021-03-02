@@ -1,0 +1,24 @@
+Hyerin Lee, UID: 305 567 859
+
+	With the original.cpp file, I provided 54 as an input to the first question. For the second question, I put 345 which exceeded the total number of Electoral College electors. For the last question, I put 243, which again exceeded the total number of Electoral College electors. This caused the program to output nonsensical results such as "638.9% of the 54 electors voted for the Republican party candidate." and "450.0% of the 54 electors voted for the Democratic party candidate."
+
+For the logic_error.cpp file, a logical error that I introduced was to switch the variable names for pctDemoc and pctRepub. The variable pctDemoc would give a percentage for the republican votes, while pctRepub would give a percentage for the democratic votes, as seen below: 
+
+double pctDemoc = ( 100.0 * republicanVotes ) / totalVoters;
+double pctRepub = ( 100.0 * democraticVotes ) / totalVoters;
+
+Although this didn't prevent successful build, it caused the program to output opposite results compared to the program in the original.cpp file.
+
+For the compile_error.cpp file, first error that I introduced was to insert a blank line in the middle of a string as shown below:
+
+cout << "How many Electoral College
+    
+electors are there? ";
+
+The error messages caused by this error were "Expected expression" and "Missing terminating '"' character" meaning that the line is incomplete and the terminating double quotation(") was missing.
+
+Another error that I introduced was misspelling of the variable pctRepub to pctRepuv in line 29.
+As a result, the compiler gave an error message "Use of undeclared identifier 'pctRepuv'," meaning that I was using an invalid variable name that was not declared. It recognized the spelling error and asked "did you mean 'pctRepub'?" 
+
+
+
