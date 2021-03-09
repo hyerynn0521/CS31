@@ -1,0 +1,153 @@
+Name: Hyerin Lee
+UID: 305 567 859
+
+Problem 1:  Assume the definitions and initializations:
+
+char c = 'T', d = 'S';
+char *p1 = &c;
+char *p2 = &d;
+char *p3;
+
+Assume further that the address of c is 6940, the address of d is 9772, and the address of e is 2224.
+What will be printed when the following statements are executed sequentially?
+
+p3 = &d;
+cout << "*p3 = " << *p3 << endl; // (1)
+p3 = p1;
+cout << "*p3 = " << *p3  << ", p3 = " << p3 << endl; // (2)
+*p1 = *p2;
+cout << "*p1 = " << *p1 << ", p1 = " << p1 << endl; // (3)
+
+Answer:
+*p3 = S
+*p3 = T, p3 = 6940
+*p1 = S, p1 = 6940
+
+
+Problem 2:  Consider the following statements:
+
+int *p;
+int i;
+int k;
+i = 42;
+k = i;
+p = &i;
+
+After these statements are executed sequentially, which of the following statements will change the value of i to 75 ?
+A. k = 75;
+B. *k = 75;
+C. p = 75;
+D. *p = 75;
+E. Two or more of the answers will change i to 75.
+
+Answer: D
+
+
+Problem 3: Which of the following lines will not compile and what is the reason for that error?
+
+char c = 'A';    // (1)
+double *p = &c;  // (2)
+int i = 'A';     // (3)
+char *q = &i;    // (4)
+char d = 65;     // (5)
+char * r = &d;   // (6)
+int j = c;       // (7)
+int * s = &j;    // (8)
+
+Answer:
+(2) will not compile because the variable type of p and c does not match. p is a double and c is a char. It's assigning a double type pointer variable to a char type variable.
+(4) will also not compile because it is assigning a char type pointer variable to a int variable. (The variable type does not match)
+
+
+Problem 4: Give the assigned value of the left-hand side variable in each assignment statement. Assume the lines are executed sequentially. Assume the address of the blocks array is 4434. To show you what I mean, the answer to the first question has been provided to you.
+
+
+
+   char blocks[3] = {'A','B','C'};
+   char *ptr = &blocks[0];    // ptr will be assigned the value: 4434
+   char temp;
+
+   temp = blocks[0];          // temp will be assigned the value: 'A'
+   temp = *(blocks + 2);      // temp will be assigned the value: 'C'
+   temp = *(ptr + 1);         // temp will be assigned the value: 'B'
+   temp = *ptr;               // temp will be assigned the value: 'A'
+
+   ptr = blocks + 1;          // ptr will be assigned the value: 4435
+   temp = *ptr;               // temp will be assigned the value: 'B'
+   temp = *(ptr + 1);         // temp will be assigned the value: 'C'
+
+   ptr = blocks;              // ptr will be assigned the value: 4434
+   temp = *++ptr;             // temp will be assigned the value: 'B'
+   temp = ++*ptr;             // temp will be assigned the value: 'C'
+   temp = *ptr++;             // temp will be assigned the value: 'C'
+   temp = *ptr;               // temp will be assigned the value: 'C'
+
+Problem 5:  Rewrite this program and remove the variable declared at line A below.  Make your revised program generate the exact same output as the original without using the variable declared at line A.
+
+        int num[ 6 ] = { 0, 0, 0, 0, 0, 0 };
+       
+        // rewrite all this code without this declared variable above
+        // make your revised code does the same thing as this original logic
+        int count = 100;
+        for(int i = 0; i<6; i ++){
+            num[i] = count;
+            count -= 10;
+            if(i == 5){
+                num[i] = 0;
+            }
+        }
+        for (int i = 0; i <= 5; i++)
+            cout << num[ i ] << " ";
+        cout << endl;
+	
+
+Problem 6:    Write a function named revString that accepts one character  pointer as a parameter and returns no value. The parameter must be a C-string.  This function must remove all of the digit character letters from  the string.  The revised string argument must be a valid C-string.  Your function  must not use any square brackets and must not use the strlen or strcpy library functions.  The signature for revString should be:  void revString( char * msg )
+
+    int main()
+    {
+        char msg[100] = "Happy 2021!";
+        revString(msg);
+        cout << msg << endl;        // prints:   Happy !
+    }
+	
+    void revString(char * msg){
+        bool digitFound = false;
+        int digits = howManyDigits(msg); // helper function
+        char * ptr2 = msg;
+        for(int i = 0; i<digits; i++){
+            ptr2 = msg;
+            while(*ptr2 != '\0'){
+        
+                if(isdigit(*ptr2)){
+                    digitFound = true;
+                
+                }
+                if(digitFound == true){
+                    *ptr2 = *(ptr2+1);
+                }
+                ptr2++;
+        
+            }
+            digitFound = false;
+        
+       
+        }
+        
+    
+    }
+
+    int howManyDigits(char * msg){
+        char * ptr = msg;
+        int result = 0;
+        while(*ptr != '\0'){
+            if(isdigit(*ptr)){
+            result++;
+            }
+            ptr++;
+        }
+        return result;
+    }
+
+
+
+
