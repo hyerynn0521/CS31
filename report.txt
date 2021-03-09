@@ -1,0 +1,94 @@
+Name: Hyerin Lee
+UID: 305 567 859
+
+a. One obstacle I overcame is finding the logical error in determineGameOutcome() function in BeatThat class. One thing I failed to notice at first is that I didn't realize didHumanWin() and didComputerWin() functions in Board class is set to false by default, so when I put mBoard.didHumanWin() and mBoard.didComputerWin() both being false as the only condition in GAMEOUTCOME::TIEDGAME. so if the game is not over, it would return TIEDGAME instead of GAMENOTOVER. I fixed this by adding a condition of mTurnCount == 5, which indicates that all the turn have been used and thus the game is over. 
+
+b.
+Die d1; d1.setValue( 1 );
+Die d2; d2.setValue( 2 );
+Die d3; d3.setValue( 3 );
+Die d4; d4.setValue( 4 );
+Die d5; d5.setValue( 5 );
+Die d6; d6.setValue( 6 );
+
+BeatThat game;
+           game.humanPlay( d6, d2 );
+            game.computerPlay( d3, d4 );
+            game.endTurn( );
+            assert(game.isGameOver() == false); // game isn't over yet
+            assert(game.getBoard().getTurnsLeft() == 4);//turns left is decremented
+            assert(game.getBoard().getHumanRoundsWon() == 1);//human won one round so far
+            game.humanPlay( d5, d1 );
+            game.computerPlay( d3, d4 );
+            game.endTurn( );
+
+            game.humanPlay( d5, d2 );
+            game.computerPlay( d6, d4 );
+            game.endTurn( );
+	   assert(game.turnsLeft() == 2);
+            game.humanPlay( d1, d2 );
+            game.computerPlay( d3, d4 );
+            game.endTurn( );
+            
+            game.humanPlay( d5, d4 );
+            game.computerPlay( d4, d5 );
+            game.endTurn( );
+    assert(game.isGameOver() == true); // game is over
+    assert(game.getBoard().didComputerWin() == false);//computer didn't win
+    assert(game.getBoard().didHumanWin() == false);//human didn't win
+    assert(game.determineGameOutcome( ) == BeatThat::TIEDGAME );//game is tied
+
+BeatThat test
+            test.humanPlay( d4, d2 );
+            test.computerPlay( d3, d4 );
+            test.endTurn( );
+	    assert(test.getBoard().didHumanWin() == false);//game isn't over yet, so return false for .didHumanWin()
+            test.humanPlay( d5, d1 );
+            test.computerPlay( d3, d4 );
+            test.endTurn( );
+	    assert(test.isGameOver() == false);//game isn't over yet
+            test.humanPlay( d5, d4 );
+            test.computerPlay( d4, d4 );
+            test.endTurn( );
+	   
+            test.humanPlay( d1, d2 );
+            test.computerPlay( d3, d4 );
+            test.endTurn( );
+            
+            test.humanPlay( d5, d4 );
+            test.computerPlay( d4, d4 );
+            test.endTurn( );
+    assert(test.isGameOver() == true);//game is over
+    assert(test.getBoard().didComputerWin() == false);//computer didn't win
+    assert(test.getBoard().didHumanWin() == true);//human won
+    assert(test.determineGameOutcome( ) == BeatThat::HUMANWONGAME);//outputs correct result
+
+BeatThat fun
+
+	    fun.humanPlay( d5, d2 );
+            fun.computerPlay( d3, d4 );
+            fun.endTurn( );
+	    assert(fun.getBoard().didHumanWin() == false);//game not over yet, human didn't win yet
+            fun.humanPlay( d5, d1 );
+            fun.computerPlay( d3, d4 );
+            fun.endTurn( );
+	    assert(game.getBoard().getHumanRoundsWon() == 2);//count human rounds won
+	    assert(fun.isGameOver() == false);//game isn't over yet
+            fun.humanPlay( d5, d4 );
+            fun.computerPlay( d6, d5 );
+            fun.endTurn( );
+	   
+            fun.humanPlay( d1, d2 );
+            fun.computerPlay( d3, d4 );
+            fun.endTurn( );
+            assert(game.getBoard().getComputerRoundsWon() == 2);//count computer rounds won
+            fun.humanPlay( d1, d4 );
+            fun.computerPlay( d4, d3 );
+            fun.endTurn( );
+    assert(game.getBoard().getComputerRoundsWon() == 3);//make sure computer rounds won incremented
+    assert(test.isGameOver() == true);//game is over
+    assert(test.getBoard().didComputerWin() == true);//computer won
+    assert(test.getBoard().didHumanWin() == false);//human didn't win
+    assert(test.determineGameOutcome( ) == BeatThat::COMPUTERWONGAME);//outputs correct result
+
+	
